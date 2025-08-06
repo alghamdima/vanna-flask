@@ -34,14 +34,13 @@ docker-compose logs -f
 docker-compose down
 ```
 
-## Production Deployment
+## Production Deployment (Direct Flask Serving)
 
-### With Nginx Reverse Proxy
-The included `docker-compose.yml` sets up:
-- Flask application container
-- Nginx reverse proxy for better performance and security
-- Health checks for both services
-- Proper networking between containers
+The application now serves directly through Flask without NGINX:
+- Flask application serves on ports 80 (HTTP) and 443 (HTTPS)
+- CORS enabled for cross-origin requests
+- Health checks monitor the application directly
+- Static files served by Flask
 
 ### Environment Variables
 Required environment variables:

@@ -71,7 +71,7 @@ EXPOSE 5000
 
 # Add health check to monitor application status
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:5000/ || exit 1
+    CMD curl -f http://localhost:5000/api/v0/generate_questions || exit 1
 
 # Add labels for better container management and documentation
 LABEL maintainer="DevOps Team <devops@company.com>" \
