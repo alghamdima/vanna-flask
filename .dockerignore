@@ -1,0 +1,58 @@
+# ملفات Git
+.git
+.gitignore
+
+# ملفات Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ملفات البيئة الافتراضية
+venv/
+env/
+ENV/
+
+# ملفات IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ملفات نظام التشغيل
+.DS_Store
+Thumbs.db
+
+# ملفات البيئة (يجب إضافتها يدوياً عند التشغيل)
+.env
+.env.local
+.env.production
+
+# ملفات التوثيق
+README.md
+LICENSE
+
+# ملفات Docker
+Dockerfile
+.dockerignore
+
+# ملفات مؤقتة
+*.tmp
+*.log

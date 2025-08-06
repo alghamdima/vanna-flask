@@ -1,0 +1,41 @@
+# ملف Docker Compose لتشغيل التطبيق مع إعدادات الإنتاج
+version: '3.8'
+
+services:
+  vanna-flask:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vanna-flask-app
+    ports:
+      - "5000:5000"
+    environment:
+      # متغيرات البيئة المطلوبة - يجب تعديلها حسب إعداداتك
+      - FLASK_APP=app.py
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1
+      # متغيرات Vanna.AI - يجب إضافة القيم الفعلية
+      - VANNA_MODEL=${VANNA_MODEL}
+      - VANNA_API_KEY=${VANNA_API_KEY}
+      # متغيرات Snowflake - يجب إضافة القيم الفعلية
+      - SNOWFLAKE_ACCOUNT=${SNOWFLAKE_ACCOUNT}
+      - SNOWFLAKE_USERNAME=${SNOWFLAKE_USERNAME}
+      - SNOWFLAKE_PASSWORD=${SNOWFLAKE_PASSWORD}
+      - SNOWFLAKE_DATABASE=${SNOWFLAKE_DATABASE}
+      - SNOWFLAKE_WAREHOUSE=${SNOWFLAKE_WAREHOUSE}
+    volumes:
+      # ربط ملف .env إذا كان موجوداً (اختياري)
+      - ./.env:/app/.env:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - vanna-network
+
+networks:
+  vanna-network:
+    driver: bridge
