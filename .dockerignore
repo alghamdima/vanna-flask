@@ -1,8 +1,8 @@
-# ملفات Git
+# Git files
 .git
 .gitignore
 
-# ملفات Python
+# Python cache files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -24,35 +24,35 @@ wheels/
 .installed.cfg
 *.egg
 
-# ملفات البيئة الافتراضية
+# Virtual environments
 venv/
 env/
 ENV/
 
-# ملفات IDE
+# IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# ملفات نظام التشغيل
+# OS files
 .DS_Store
 Thumbs.db
 
-# ملفات البيئة (يجب إضافتها يدوياً عند التشغيل)
+# Environment files (should be added manually at runtime)
 .env
 .env.local
 .env.production
 
-# ملفات التوثيق
+# Documentation
 README.md
 LICENSE
 
-# ملفات Docker
+# Docker files
 Dockerfile
 .dockerignore
 
-# ملفات مؤقتة
+# Temporary files
 *.tmp
 *.log

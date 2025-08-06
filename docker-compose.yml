@@ -1,4 +1,4 @@
-# ملف Docker Compose لتشغيل التطبيق مع إعدادات الإنتاج
+# Docker Compose file for running the application with production settings
 version: '3.8'
 
 services:
@@ -10,21 +10,21 @@ services:
     ports:
       - "5000:5000"
     environment:
-      # متغيرات البيئة المطلوبة - يجب تعديلها حسب إعداداتك
+      # Required environment variables - must be updated with actual values
       - FLASK_APP=app.py
       - FLASK_ENV=production
       - PYTHONUNBUFFERED=1
-      # متغيرات Vanna.AI - يجب إضافة القيم الفعلية
+      # Vanna.AI variables - must add actual values
       - VANNA_MODEL=${VANNA_MODEL}
       - VANNA_API_KEY=${VANNA_API_KEY}
-      # متغيرات Snowflake - يجب إضافة القيم الفعلية
+      # Snowflake variables - must add actual values
       - SNOWFLAKE_ACCOUNT=${SNOWFLAKE_ACCOUNT}
       - SNOWFLAKE_USERNAME=${SNOWFLAKE_USERNAME}
       - SNOWFLAKE_PASSWORD=${SNOWFLAKE_PASSWORD}
       - SNOWFLAKE_DATABASE=${SNOWFLAKE_DATABASE}
       - SNOWFLAKE_WAREHOUSE=${SNOWFLAKE_WAREHOUSE}
     volumes:
-      # ربط ملف .env إذا كان موجوداً (اختياري)
+      # Mount .env file if it exists (optional)
       - ./.env:/app/.env:ro
     restart: unless-stopped
     healthcheck:
