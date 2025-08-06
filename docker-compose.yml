@@ -7,8 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: vanna-flask-app
     ports:
-      - "80:5000"
-      - "443:5000"
+      - "5000:5000"
     environment:
       # These should be provided via .env file or environment variables
       - VANNA_MODEL=${VANNA_MODEL}
@@ -32,6 +31,21 @@ services:
     networks:
       - vanna-network
 
+  # Optional: Add a reverse proxy (nginx) for production
+  nginx:
+    image: nginx:alpine
+    container_name: vanna-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro  # If using SSL certificates
+    depends_on:
+      - vanna-flask
+    restart: unless-stopped
+    networks:
+      - vanna-network
 
 networks:
   vanna-network:

@@ -3,13 +3,11 @@ load_dotenv()
 
 from functools import wraps
 from flask import Flask, jsonify, Response, request, redirect, url_for
-from flask_cors import CORS
 import flask
 import os
 from cache import MemoryCache
 
 app = Flask(__name__, static_url_path='')
-CORS(app)  # Enable CORS for all routes since we're removing NGINX
 
 # SETUP
 cache = MemoryCache()
